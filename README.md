@@ -11,13 +11,6 @@ Numpy (http://www.numpy.org) and Scipy (http://www.scipy.org) need to be
 installed.  Versions of Numpy and Scipy tested with this code were 1.6.1 and
 0.9.0, respectively.
 
-Installation
-------------
-
-Use **setup.py** to install this package:
-
-    sudo python setup.py install
-
 Usage Instructions
 ------------
 
