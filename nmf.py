@@ -31,6 +31,7 @@ import time
 import sys
 
 import Common.errors
+from Common.display import my_display
 
 
 def snmf_bcd(cfg_matr, alpha, beta,
