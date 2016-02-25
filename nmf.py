@@ -28,7 +28,6 @@ import numpy as np
 import nnls
 import matrix_utils as matr_util
 import time
-import sys
 
 import Common.errors
 from Common.display import my_display
@@ -166,10 +165,10 @@ def snmf_bcd(cfg_matr, alpha, beta,
         str_err = 'Relative Error: %0.5f' % err
         str_elapsed = 'Elapsed Time: %0.3f sec' % t_iter_elapsed
         my_display('{} {} | {} | {} \r'.format(str_header, str_iter,
-                                            str_err, str_elapsed),
-                verbose)
+                                               str_err, str_elapsed),
+                   verbose)
     my_display('\nDone.\n', verbose)
 
     W, H, weights = matr_util.normalize_column_pair(W, H)
 
-    return W, H, rel_error
+    return W.T, H.T, rel_error
