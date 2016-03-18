@@ -29,8 +29,8 @@ import nnls
 import matrix_utils as matr_util
 import time
 
-import Common.errors
-from Common.display import my_display
+import errors
+from display import my_display
 
 
 def snmf_bcd(cfg_matr, alpha, beta,
@@ -88,13 +88,13 @@ def snmf_bcd(cfg_matr, alpha, beta,
     """
 
     # Standard param checks
-    Common.errors.check_type(cfg_matr, np.ndarray)
-    Common.errors.check_type(alpha, float)
-    Common.errors.check_type(beta, float)
-    Common.errors.check_type(fac_subnet_init, np.ndarray)
-    Common.errors.check_type(fac_coef_init, np.ndarray)
-    Common.errors.check_type(max_iter, int)
-    Common.errors.check_type(verbose, bool)
+    errors.check_type(cfg_matr, np.ndarray)
+    errors.check_type(alpha, float)
+    errors.check_type(beta, float)
+    errors.check_type(fac_subnet_init, np.ndarray)
+    errors.check_type(fac_coef_init, np.ndarray)
+    errors.check_type(max_iter, int)
+    errors.check_type(verbose, bool)
 
     # Check input dimensions
     if not len(cfg_matr.shape) == 2:
