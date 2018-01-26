@@ -11,6 +11,22 @@ Change Log
 import os
 import inspect
 
+def check_dims(arr, nd):
+    '''
+    Check if numpy array has specific number of dimensions
+
+    Parameters
+    ----------
+        arr: numpy.ndarray
+            Input array for dimension checking
+
+        nd: int
+            Number of dimensions to check against
+    '''
+
+    if not arr.ndim == nd:
+        raise Exception('%r has %r dimensions. Must have %r' % (arr, arr.ndim, nd))
+
 
 def check_type(obj, typ):
     '''
