@@ -1,19 +1,25 @@
-Python Toolbox for Nonnegative Matrix Factorization
+Detection of Functional Subgraphs from Dynamic Networks
 ====================
 
-This package includes Python implementations (with Numpy and Scipy) of
-numerical algorithms for computing nonnegative matrix factorization.
+This package includes a Python implementation (with Numpy and Scipy) of
+numerical algorithms for decomposing a time-varying graph into 
+parts-based, additive subgraphs.
+
+
 
 Requirements
 ------------
 
-Numpy (http://www.numpy.org) and Scipy (http://www.scipy.org) need to be
-installed.  Versions of Numpy and Scipy tested with this code were 1.6.1 and
-0.9.0, respectively.
+Numpy (https://www.numpy.org) and Scipy (https://www.scipy.org) need to be
+installed.
+
+Echobase toolbox is not required for core functionality, but is required to run tutorial notebooks (https://github.com/akhambhati/echobase).
+
+
 
 Quick-Start
 -----------
-Non-Negative Matrix Factorization for dynamic brain networks, such that:
+Non-Negative Matrix Factorization for dynamic networks, such that:
 
     A ~= WH
     Constraints:
