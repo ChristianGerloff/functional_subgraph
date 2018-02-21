@@ -165,7 +165,7 @@ def snmf_bcd(cfg_matr, alpha, beta,
 
     display.my_display('\nBeginning Non-Negative Matrix Factorization\n', verbose)
     t_iter_start = time.time()
-    for ii in xrange(max_iter):
+    for ii in range(max_iter):
         # Use the Block-Pivot Solver
         # First solve for H
         W_beta = np.vstack((W, beta_matr))

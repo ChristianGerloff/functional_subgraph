@@ -14,7 +14,7 @@ Change Log
 import numpy as np
 from . import Utils
 nnls = Utils.nnls
-matrix_util = Utils.matrix_utils
+matrix_utils = Utils.matrix_utils
 
 from . import nmf
 snmf_bcd = nmf.snmf_bcd
@@ -80,7 +80,7 @@ def gen_random_sampling_paramset(rank_range, alpha_range, beta_range, n_param,
     # Check the folds for size-matching and repeats
     all_fold_ix = []
     all_fold_size = []
-    for fold_id in xrange(n_fold):
+    for fold_id in range(n_fold):
         all_fold_size.append(len(fold_list[fold_id]))
         for fold_ix in fold_list[fold_id]:
             all_fold_ix.append(fold_ix)
@@ -94,7 +94,7 @@ def gen_random_sampling_paramset(rank_range, alpha_range, beta_range, n_param,
     # Generate parameter list
     param_list = []
     param_id = 0
-    for fold_id in xrange(n_fold):
+    for fold_id in range(n_fold):
         test_ix = fold_list[fold_id]
 
         train_ix = []
@@ -153,7 +153,7 @@ def run_xval_paramset(cfg_matr, param_dict):
     n_test_win, n_test_conn = test_cfg_matr.shape
 
     # Display output
-    display.my_display('Optimizing parameter set: {} \n'.format(param_dict['param_id']), True, param_dict['str_path'])
+    display.my_display('Optimizing parameter set: {} \r'.format(param_dict['param_id']), True, param_dict['str_path'])
 
     # Run NMF on training set
     fac_subnet_init = np.random.uniform(low=0.0, high=1.0,
@@ -260,7 +260,7 @@ def find_optimum_xval_paramset(param_list, qmeas_list, search_pct=25):
 
 def _cons_seeds(param_dict):
     # Display output
-    display.my_display('Optimizing parameter set: {} \n'.format(param_dict['param_id']), True, param_dict['str_path'])
+    display.my_display('Optimizing parameter set: {} \r'.format(param_dict['param_id']), True, param_dict['str_path'])
 
     # Derive params from dict
     n_win, n_conn = param_dict['cfg_matr'].shape
@@ -339,7 +339,7 @@ def consensus_nmf(cfg_matr, opt_alpha, opt_beta,
     # Generate parameter list
     param_list = []
     param_id = 0
-    for seed_id in xrange(n_seed):
+    for seed_id in range(n_seed):
         param_dict =  {'param_id': param_id,
                        'alpha': opt_alpha,
                        'beta': opt_beta,
