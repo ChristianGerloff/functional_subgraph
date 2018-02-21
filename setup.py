@@ -21,7 +21,7 @@ PACKAGES = find_packages()
 AUTHOR = "Ankit N. Khambhati"
 AUTHOR_EMAIL = "akhambhati@gmail.com"
 DOWNLOAD_URL = 'http://github.com/akhambhati/functional_subgraph/'
-LICENSE = 'NOKOS'
+LICENSE = 'Nokia Open Source License'
 INSTALL_REQUIRES = ['numpy', 'scipy', 'ipython']
 
 setup(
@@ -35,7 +35,7 @@ setup(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
         'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: NOKOS',
+        'License :: OSI Approved :: Nokia Open Source License',
         'Natural Language :: English',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
