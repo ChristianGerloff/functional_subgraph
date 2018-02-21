@@ -1,25 +1,16 @@
-Detection of Functional Subgraphs from Dynamic Networks
+Functional Subgraph
 ====================
 
-This package includes a Python implementation (with Numpy and Scipy) of
-numerical algorithms for decomposing a time-varying graph into 
-parts-based, additive subgraphs.
+A machine learning toolbox for the analysis of dynamic graphs.
 
-
-
-Requirements
-------------
-
-Numpy (https://www.numpy.org) and Scipy (https://www.scipy.org) need to be
-installed.
-
-Echobase toolbox is not required for core functionality, but is required to run tutorial notebooks (https://github.com/akhambhati/echobase).
-
+*Functional Subgraph* implements non-negative matrix factorization to decompose
+time-varying, dynamic graphs into a composite set of parts-based, additive
+subgraphs.
 
 
 Quick-Start
 -----------
-Non-Negative Matrix Factorization for dynamic networks, such that:
+Non-Negative Matrix Factorization for dynamic graphs, such that:
 
     A ~= WH
     Constraints:
