@@ -1,2 +1,2 @@
-import nnls
-import matrix_utils
+from . import nnls
+from . import matrix_utils

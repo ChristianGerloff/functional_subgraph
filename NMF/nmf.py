@@ -25,11 +25,15 @@ Change Log
 '''
 
 import numpy as np
-from Utils import nnls
-from Utils import matrix_utils as matr_util
+from . import Utils
 import time
 
-from Common import errors, display
+from . import Common
+
+nnls = Utils.nnls
+matr_util = Utils.matrix_utils
+errors = Common.errors
+display = Common.display
 
 
 def snmf_bcd(cfg_matr, alpha, beta,

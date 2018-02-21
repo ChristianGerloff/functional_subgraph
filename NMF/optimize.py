@@ -12,12 +12,18 @@ Change Log
 '''
 
 import numpy as np
-from Utils import nnls
-from Utils import matrix_utils
-from .nmf import snmf_bcd
+from . import Utils
+nnls = Utils.nnls
+matrix_util = Utils.matrix_utils
+
+from . import nmf
+snmf_bcd = nmf.snmf_bcd
 import multiprocessing as mp
 
-from Common import errors, display
+from . import Common
+errors = Common.errors
+display = Common.display
+
 
 def gen_random_sampling_paramset(rank_range, alpha_range, beta_range, n_param,
                                  fold_list, str_path=None):
