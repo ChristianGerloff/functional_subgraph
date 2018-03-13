@@ -88,7 +88,7 @@ def nnlsm_blockpivot(A, B, is_input_prod=False, init=None):
         temp1 = np.logical_and(not_opt_colset, not_good >= ninf_vec)
         temp2 = p_vec >= 1
         cols_set2 = np.logical_and(temp1, temp2)
-        cols_set3 = np.logical_and(temp1, -temp2)
+        cols_set3 = np.logical_and(temp1, ~temp2)
 
         cols1 = cols_set1.nonzero()[0]
         cols2 = cols_set2.nonzero()[0]
@@ -220,7 +220,7 @@ def nnlsm_activeset(A, B, overwrite=False, is_input_prod=False, init=None):
         infea_subset = Z < 0
         temp = np.any(infea_subset, axis=0)
         infea_subcols = temp.nonzero()[0]
-        fea_subcols = (-temp).nonzero()[0]
+        fea_subcols = (~temp).nonzero()[0]
 
         if infea_subcols.size > 0:
             infea_cols = not_opt_cols[infea_subcols]
@@ -385,11 +385,11 @@ def column_group_sub(B, i, cols):
         return [cols]
     if i == (B.shape[0] - 1):
         col_trues = cols[vec.nonzero()[0]]
-        col_falses = cols[(-vec).nonzero()[0]]
+        col_falses = cols[(~vec).nonzero()[0]]
         return [col_trues, col_falses]
     else:
         col_trues = cols[vec.nonzero()[0]]
-        col_falses = cols[(-vec).nonzero()[0]]
+        col_falses = cols[(~vec).nonzero()[0]]
         after = column_group_sub(B, i + 1, col_trues)
         after.extend(column_group_sub(B, i + 1, col_falses))
     return after
