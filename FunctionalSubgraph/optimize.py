@@ -353,8 +353,11 @@ def consensus_nmf(cfg_matr, opt_alpha, opt_beta,
         param_id += 1
 
     # Run parloop
-    pool = mp.Pool(processes=n_proc,)
-    pop_fac = pool.map(_cons_seeds, param_list)
+    if n_proc > 1:
+        pool = mp.Pool(processes=n_proc,)
+        pop_fac = pool.map(_cons_seeds, param_list)
+    else:
+        pop_fac = map(_cons_seeds, param_list)
 
     # Concatenate subgraphs into ensemble
     subnet_ensemble = np.zeros((opt_rank*n_seed, n_conn))
