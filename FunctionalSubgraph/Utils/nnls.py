@@ -68,7 +68,7 @@ def nnlsm_blockpivot(A, B, is_input_prod=False, init=None):
     p_vec[:] = p_bar
     ninf_vec = np.zeros([k])
     ninf_vec[:] = n + 1
-    not_opt_set = np.logical_and(Y < 0, -PassSet)
+    not_opt_set = np.logical_and(Y < 0, ~PassSet)
     infea_set = np.logical_and(X < 0, PassSet)
 
     not_good = np.sum(not_opt_set, axis=0) + np.sum(infea_set, axis=0)
@@ -113,7 +113,7 @@ def nnlsm_blockpivot(A, B, is_input_prod=False, init=None):
                 candi_set = np.logical_or(
                     not_opt_set[:, col], infea_set[:, col])
                 to_change = np.max(candi_set.nonzero()[0])
-                PassSet[to_change, col] = -PassSet[to_change, col]
+                PassSet[to_change, col] = ~PassSet[to_change, col]
                 num_backup += 1
 
         (X[:, not_opt_cols], temp_cholesky, temp_eq) = normal_eq_comb(
@@ -126,7 +126,7 @@ def nnlsm_blockpivot(A, B, is_input_prod=False, init=None):
 
         not_opt_mask = np.tile(not_opt_colset, (n, 1))
         not_opt_set = np.logical_and(
-            np.logical_and(not_opt_mask, Y < 0), -PassSet)
+            np.logical_and(not_opt_mask, Y < 0), ~PassSet)
         infea_set = np.logical_and(
             np.logical_and(not_opt_mask, X < 0), PassSet)
         not_good = np.sum(not_opt_set, axis=0) + np.sum(infea_set, axis=0)
@@ -251,12 +251,12 @@ def nnlsm_activeset(A, B, overwrite=False, is_input_prod=False, init=None):
             Y[abs(Y) < 1e-12] = 0
 
             not_opt_subset = np.logical_and(
-                Y[:, fea_cols] < 0, -PassSet[:, fea_cols])
+                Y[:, fea_cols] < 0, ~PassSet[:, fea_cols])
             new_opt_cols = fea_cols[np.all(-not_opt_subset, axis=0)]
             update_cols = fea_cols[np.any(not_opt_subset, axis=0)]
 
             if update_cols.size > 0:
-                val = Y[:, update_cols] * -PassSet[:, update_cols]
+                val = Y[:, update_cols] * ~PassSet[:, update_cols]
                 min_ix = np.argmin(val, axis=0)
                 PassSet[(min_ix, update_cols)] = True
 
